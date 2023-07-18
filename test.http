@@ -1,0 +1,40 @@
+@endpoint = http://localhost:5000
+
+GET {{endpoint}} HTTP/1.1
+x-app-version: 1.0.0
+```
+
+# @name ROLE API
+POST {{endpoint}}/api/roles HTTP/1.1
+x-app-version: 1.0.0
+Content-Type: application/json
+{
+  "name": "User",
+  "default": true,
+  "permissions": ["READ", "WRITE"]
+}
+
+POST {{endpoint}}/api/roles HTTP/1.1
+x-app-version: 1.0.0
+Content-Type: application/json
+{
+  "name": "Administrator",
+  "default": false,
+  "permissions": ["READ", "WRITE", "MODERATE", "ADMIN"]
+}
+
+POST {{endpoint}}/api/roles HTTP/1.1
+x-app-version: 1.0.0
+Content-Type: application/json
+{
+  "name": "Moderator",
+  "default": false,
+  "permissions": ["READ", "WRITE", "MODERATE"]
+}
+
+PATCH {{endpoint}}/api/roles/7bac2118-220f-432c-b71d-f4b80e1981c6 HTTP/1.1
+x-app-version: 1.0.0
+Content-Type: application/json
+{
+  "permissions": ["READ", "WRITE", "MODERATE", "ADMIN"]
+}
